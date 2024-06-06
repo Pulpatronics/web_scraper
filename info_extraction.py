@@ -31,7 +31,9 @@ class Extractor:
 
     def __generate_summary(self, text, n=3):
         # shorten the text to n number of sentences
-        return self.model(text, num_sentences=n)
+        summary = self.model(text, num_sentences=n)
+        # remove newlines
+        return " ".join(summary.splitlines())
     
     def __word_count(self, keyword, text):
         if not text:
