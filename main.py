@@ -87,11 +87,6 @@ def save_to_csv(data, filename="test.csv"):
         for row in data:
             writer.writerow(row)
 
-
-def save_to_txt(data, filename="test.txt"):
-    with open(filename, "a") as file:
-        file.write(data)
-
 def __main__():
     args = sys.argv
     n = 10
@@ -103,7 +98,6 @@ def __main__():
     for _ in range(n):
         params = request_builder(start=start, dateRestrict=200)
         result = requests.get(base_url + params)
-        save_to_txt(result.text)
         if result.status_code != 200:
             print(f"Error: {result.status_code}")
             print()
